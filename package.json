@@ -1,8 +1,9 @@
 {
   "name": "flashcardhtml",
   "version": "1.0.0",
-  "main": "words.js",
+  "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "jest"
   },
   "keywords": [],
