@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polish Flashcards Pro</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🇵🇱 Polish Master</h1>
+            <div class="nav-buttons">
+                <button id="nav-flashcards" class="active">Flashcards</button>
+                <button id="nav-manage">Manage Words</button>
+                <button id="btn-theme" title="Toggle Theme">🌓</button>
+            </div>
+        </header>
+
+        <!-- FLASHCARD VIEW -->
+        <section id="view-flashcards" class="view-section active">
+            <div class="flashcard-container">
+                <div class="study-controls">
+                    <select id="study-category" class="study-filter">
+                        <option value="all">All Categories</option>
+                    </select>
+                    <select id="study-tag" class="study-filter">
+                        <option value="all">All Tags</option>
+                    </select>
+                    <button id="btn-direction" class="study-filter">🇵🇱 ➔ <small>EN</small></button>
+                </div>
+                <div class="progress" id="progress">Loading...</div>
+
+                <div class="flashcard" id="flashcard">
+                    <div class="front">
+                        <div class="main-word" id="polish-word"></div>
+                        <div class="word-type" id="polish-type"></div>
+                        <div class="pronunciation" id="polish-pronunciation"></div>
+                        <div class="example" id="polish-example"></div>
+                        <div class="tags-display" id="polish-tags"></div>
+                    </div>
+                    <div class="back">
+                        <div class="main-word" id="english-word"></div>
+                        <div class="word-type" id="english-type"></div>
+                        <div class="pronunciation" id="english-pronunciation"></div>
+                        <div class="example" id="english-example"></div>
+                        <div class="tags-display" id="english-tags"></div>
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <button class="btn-control btn-prev" id="prevBtn">← Previous</button>
+                    <button class="btn-control btn-shuffle" id="shuffleBtn">🔀 Shuffle</button>
+                    <button class="btn-control btn-next" id="nextBtn">Next →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- MANAGEMENT VIEW -->
+        <section id="view-manage" class="view-section">
+            <div class="management-panel">
+                <div class="panel-header">
+                    <h2>Word Library</h2>
+                    <div class="panel-actions">
+                        <button class="btn-secondary" id="btn-backup">💾 Backup</button>
+                        <button class="btn-secondary" id="btn-import">📥 Import</button>
+                        <button class="btn-primary" id="btn-add-word">+ Add Word</button>
+                    </div>
+                </div>
+
+                <div class="filters">
+                    <input type="text" id="search-input" placeholder="Search words...">
+                    <select id="filter-category">
+                        <option value="all">All Categories</option>
+                    </select>
+                    <select id="filter-status">
+                        <option value="all">All Status</option>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+
+                <div class="word-list" id="word-list">
+                    <!-- Word items will be injected here -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ADD/EDIT MODAL -->
+    <div class="modal" id="word-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Add New Word</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form id="word-form">
+                <input type="hidden" id="word-id">
+
+                <!-- Common Fields -->
+                <div class="form-row">
+                    <div class="form-group" style="flex: 1;">
+                        <label>Category</label>
+                        <input type="text" id="input-category" list="categories-list"
+                            placeholder="Select or Type New..." required>
+                        <datalist id="categories-list"></datalist>
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label>Tags</label>
+                        <input type="text" id="input-tags" placeholder="comma, separated">
+                    </div>
+                </div>
+
+                <hr style="border:0; border-top:1px solid #eee; margin: 10px 0 20px 0;">
+
+                <!-- Split Layout -->
+                <div class="form-row" style="align-items: flex-start;">
+                    <!-- Polish Column -->
+                    <div class="form-group" style="flex:1; background:#f9f9f9; padding:15px; border-radius:10px;">
+                        <h4 style="margin-bottom:15px; color:#667eea; display:flex; align-items:center; gap:5px">
+                            🇵🇱 Polish
+                        </h4>
+                        <div class="form-group">
+                            <label>Word / Phrase</label>
+                            <input type="text" id="input-polish" required style="font-weight:bold">
+                        </div>
+                        <div class="form-group">
+                            <label>Type</label>
+                            <input type="text" id="input-polish-type" placeholder="e.g. noun">
+                        </div>
+                        <div class="form-group">
+                            <label>Pronunciation</label>
+                            <input type="text" id="input-polish-pron" placeholder="[phonetic]">
+                        </div>
+                        <div class="form-group">
+                            <label>Example</label>
+                            <textarea id="input-polish-ex" rows="2" placeholder="Example sentence"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- English Column -->
+                    <div class="form-group" style="flex:1; background:#f9f9f9; padding:15px; border-radius:10px;">
+                        <h4 style="margin-bottom:15px; color:#764ba2; display:flex; align-items:center; gap:5px">
+                            🇬🇧 English
+                        </h4>
+                        <div class="form-group">
+                            <label>Word / Phrase</label>
+                            <input type="text" id="input-english" required style="font-weight:bold">
+                        </div>
+                        <div class="form-group">
+                            <label>Type</label>
+                            <input type="text" id="input-english-type" placeholder="e.g. noun">
+                        </div>
+                        <div class="form-group">
+                            <label>Pronunciation</label>
+                            <input type="text" id="input-english-pron" placeholder="[phonetic]">
+                        </div>
+                        <div class="form-group">
+                            <label>Example</label>
+                            <textarea id="input-english-ex" rows="2" placeholder="Example sentence"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-top:15px">
+                    <label style="cursor:pointer; display:flex; align-items:center; gap:10px">
+                        <input type="checkbox" id="input-active" checked style="width:auto">
+                        <span>Active (Show in Flashcards)</span>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-primary" style="width:100%; padding:12px; font-size:1.1em">Save
+                    Word</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- IMPORT MODAL -->
+    <div class="modal" id="import-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Import Words</h3>
+                <button class="close-modal"
+                    onclick="document.getElementById('import-modal').classList.remove('active')">&times;</button>
+            </div>
+
+            <div class="import-tabs"
+                style="display:flex; gap:10px; margin-bottom:15px; border-bottom:1px solid #eee; padding-bottom:10px">
+                <label style="cursor:pointer; font-weight:bold">
+                    <input type="radio" name="import-source" value="file" checked> 📁 Upload File
+                </label>
+                <label style="cursor:pointer; font-weight:bold">
+                    <input type="radio" name="import-source" value="text"> 📝 Paste Text
+                </label>
+            </div>
+
+            <div id="import-section-file" class="import-section">
+                <div class="form-group">
+                    <p>Select a JSON file to upload:</p>
+                    <input type="file" id="import-file" accept=".json"
+                        style="padding:10px; background:#f5f5f5; width:100%; border-radius:5px">
+                </div>
+            </div>
+
+            <div id="import-section-text" class="import-section" style="display:none">
+                <div class="form-group">
+                    <p>Paste JSON text below:</p>
+                    <textarea id="import-text" placeholder='[
+  {
+    "polish": "Dzień dobry",
+    "polishType": "phrase",
+    "polishPronunciation": "[jen dob-ry]",
+    "polishExample": "Dzień dobry, jak się masz?",
+    "english": "Good morning",
+    "englishType": "phrase",
+    "englishPronunciation": "[gud mor-ning]",
+    "englishExample": "Good morning, how are you?",
+    "category": "Greetings",
+    "tags": ["basic", "polite"],
+    "active": true
+  }
+]' style="height:200px; font-family:monospace; white-space:pre; font-size:0.85em"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top:20px; padding-top:15px; border-top:1px solid #eee">
+                <p style="margin-bottom:10px; font-weight:bold">Import Mode:</p>
+                <div style="display:flex; gap:20px">
+                    <label style="cursor:pointer; display:flex; align-items:center; gap:5px">
+                        <input type="radio" name="import-mode" value="merge" checked>
+                        <span>Merge <span style="color:#666; font-size:0.9em">(Add to existing)</span></span>
+                    </label>
+                    <label style="cursor:pointer; display:flex; align-items:center; gap:5px">
+                        <input type="radio" name="import-mode" value="overwrite">
+                        <span>Overwrite <span style="color:#666; font-size:0.9em">(Replace all)</span></span>
+                    </label>
+                </div>
+            </div>
+            <button id="btn-confirm-import" class="btn-primary" style="width:100%; margin-top:15px">Import
+                Words</button>
+        </div>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+
+</html>

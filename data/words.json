@@ -1,0 +1,103 @@
+[
+  {
+    "id": "c871310c-6700-4105-a202-7c46656f04d2",
+    "active": true,
+    "tags": [],
+    "category": "General",
+    "polish": "Koperta",
+    "polishType": "noun",
+    "polishPronunciation": "[ko-PER-ta]",
+    "polishExample": "Włóż list do koperty.",
+    "english": "Envelope",
+    "englishType": "noun",
+    "englishPronunciation": "[EN-vuh-lohp]",
+    "englishExample": "Put the letter in the envelope."
+  },
+  {
+    "id": "e096c519-a1c7-48ea-9364-8ee95630bcf0",
+    "active": true,
+    "tags": [],
+    "category": "General",
+    "polish": "Adres zwrotny",
+    "polishType": "noun phrase",
+    "polishPronunciation": "[AD-res ZVROT-ni]",
+    "polishExample": "Napisz adres zwrotny na kopercie.",
+    "english": "Return address",
+    "englishType": "noun phrase",
+    "englishPronunciation": "[ri-TURN uh-DRES]",
+    "englishExample": "Write the return address on the envelope."
+  },
+  {
+    "id": "ff387fb3-28cf-480a-a934-14e93af0750d",
+    "active": true,
+    "tags": [],
+    "category": "General",
+    "polish": "Pośpieszne / w pośpiechu",
+    "polishType": "adjective / adverbial phrase",
+    "polishPronunciation": "[po-SHPYESH-neh / v po-SHPYEH-hoo]",
+    "polishExample": "Byłem w pośpiechu i zapomniałem kluczy.",
+    "english": "In a hurry",
+    "englishType": "adverbial phrase",
+    "englishPronunciation": "[in uh HUR-ee]",
+    "englishExample": "I was in a hurry and forgot my keys."
+  },
+  {
+    "id": "c0d18493-fa0b-4e7d-bacb-89689093d029",
+    "active": true,
+    "tags": [],
+    "category": "General",
+    "polish": "Widnieć",
+    "polishType": "verb",
+    "polishPronunciation": "[VEED-nyetch]",
+    "polishExample": "Nad horyzontem widnieje księżyc.",
+    "english": "To appear / to be visible",
+    "englishType": "verb",
+    "englishPronunciation": "[too uh-PEER]",
+    "englishExample": "The moon appears on the horizon."
+  },
+  {
+    "id": "ef31501e-4f47-4acb-864f-89f25a25dbfc",
+    "active": true,
+    "tags": [],
+    "category": "General",
+    "polish": "Wspomnienia",
+    "polishType": "noun",
+    "polishPronunciation": "[vspo-MNYEH-nya]",
+    "polishExample": "Mam piękne wspomnienia z dzieciństwa.",
+    "english": "Memories",
+    "englishType": "noun",
+    "englishPronunciation": "[MEM-uh-reez]",
+    "englishExample": "I have beautiful memories from childhood."
+  },
+  {
+    "id": "4912ff52-b62e-4a31-8f25-3ce1f3edb9da",
+    "active": true,
+    "tags": [],
+    "category": "General",
+    "polish": "Dreszcz",
+    "polishType": "noun",
+    "polishPronunciation": "[dreshch]",
+    "polishExample": "Poczułem dreszcz na plecach.",
+    "english": "Shiver / Chill",
+    "englishType": "noun",
+    "englishPronunciation": "[SHIV-er / chil]",
+    "englishExample": "I felt a shiver down my back."
+  },
+  {
+    "id": "ed8a8ec5-1886-446c-ac83-ed095e90d255",
+    "active": true,
+    "tags": [
+      "tags1",
+      "tags2"
+    ],
+    "category": "General",
+    "polish": "B1",
+    "english": "B1",
+    "polishType": "",
+    "polishPronunciation": "",
+    "polishExample": "",
+    "englishType": "",
+    "englishPronunciation": "",
+    "englishExample": ""
+  }
+]
