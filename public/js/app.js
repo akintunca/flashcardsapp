@@ -67,7 +67,7 @@ async function loadWords() {
         updateStudyFilters(); // Initialize study filter options
 
         // Set initial direction button text
-        document.getElementById('btn-direction').innerHTML = direction === 'pl-en' ? '🇵🇱 ➔ <small>EN</small>' : '<small>EN</small> ➔ 🇵🇱';
+        document.getElementById('btn-direction').textContent = direction === 'pl-en' ? '🇵🇱 ➔ 🇬🇧' : '🇬🇧 ➔ 🇵🇱';
 
         // Apply saved theme
         document.documentElement.setAttribute('data-theme', theme);
@@ -261,7 +261,7 @@ function setupEventListeners() {
     document.getElementById('btn-direction').addEventListener('click', (e) => {
         direction = direction === 'pl-en' ? 'en-pl' : 'pl-en';
         localStorage.setItem('flashcard_direction', direction); // Save to storage
-        e.currentTarget.innerHTML = direction === 'pl-en' ? '🇵🇱 ➔ <small>EN</small>' : '<small>EN</small> ➔ 🇵🇱';
+        e.currentTarget.textContent = direction === 'pl-en' ? '🇵🇱 ➔ 🇬🇧' : '🇬🇧 ➔ 🇵🇱';
         updateFlashcardView();
     });
 
